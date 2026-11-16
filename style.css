@@ -1,0 +1,342 @@
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #100d10;
+    color: #f2e9ec;
+    font-family: Georgia, serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+main {
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+
+    animation: aparecer 1.5s ease forwards;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+.subtitulo {
+    color: #9b4059;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 38px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #c46a83;
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.mensagem {
+    color: #b9aeb3;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+button {
+    background-color: #70283d;
+    color: white;
+
+    border: none;
+    padding: 14px 28px;
+
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: Georgia, serif;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #963b55;
+    transform: scale(1.05);
+}
+
+/* =========================
+   GALERIA DE FOTOS
+========================= */
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+
+    width: 100%;
+    max-width: 650px;
+    margin: 35px auto;
+}
+
+.foto {
+    text-align: center;
+    min-width: 0;
+}
+
+.foto img {
+    display: block;
+
+    width: 100%;
+    height: 260px;
+
+    object-fit: contain;
+    background-color: #1a1519;
+
+    border: 1px solid #492331;
+    border-radius: 5px;
+
+    transition: transform 0.4s;
+}
+
+.foto img:hover {
+    transform: scale(1.03);
+    border-color: #963b55;
+}
+
+.foto p {
+    color: #b9aeb3;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 500px) {
+
+    main {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+
+    .foto img {
+        height: 280px;
+    }
+
+}
+
+/* CARTA */
+
+.carta {
+    max-width: 540px;
+    margin: 35px auto;
+    text-align: left;
+}
+
+.carta p {
+    color: #c9bbc1;
+    font-size: 17px;
+    line-height: 2;
+    margin-bottom: 25px;
+    text-indent: 25px;
+}
+
+.carta p:last-child {
+    margin-bottom: 35px;
+}
+
+@media (max-width: 500px) {
+
+    .carta p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+}
+
+/* ANIMAÇÃO DA CARTA */
+.carta-final {
+    animation: cartaEntrar 1.4s ease-out both;
+}
+
+@keyframes cartaEntrar {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* CORAÇÕES FLUTUANTES */
+body::before,
+body::after {
+    content: "♥";
+    position: fixed;
+    bottom: -50px;
+    color: rgba(150, 59, 85, 0.35);
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 0;
+    animation: coracaoSubir 9s linear infinite;
+}
+
+body::before {
+    left: 15%;
+    animation-delay: 0s;
+}
+
+body::after {
+    right: 18%;
+    font-size: 16px;
+    animation-delay: 4s;
+    animation-duration: 11s;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes coracaoSubir {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* ACABAMENTO DE PAPEL DA CARTA */
+.carta-final {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(125, 65, 82, 0.08),
+            transparent 45%
+        ),
+        #1d171b;
+
+    border: 1px solid #68404d;
+    border-radius: 3px;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.5),
+        inset 0 0 35px rgba(150, 59, 85, 0.06);
+
+    position: relative;
+}
+
+/* DETALHE NOS CANTOS */
+.carta-final::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(150, 59, 85, 0.18);
+    pointer-events: none;
+}
+
+/* TEXTO MAIS ELEGANTE */
+.texto-carta p {
+    color: #d1c2c8;
+    letter-spacing: 0.2px;
+}
+
+/* DETALHE DA ASSINATURA */
+.assinatura {
+    letter-spacing: 1px;
+}
+
+/* AJUSTE DA LEITURA DA CARTA */
+.carta-final .texto-carta {
+    max-width: 520px;
+    width: 100%;
+    margin: 35px auto 0;
+    text-align: left;
+}
+
+.carta-final .texto-carta p {
+    text-align: left;
+    line-height: 1.9;
+    margin-bottom: 22px;
+}
+
+.carta-final {
+    padding: 45px 30px;
+}
+
+@media (max-width: 500px) {
+    .carta-final {
+        padding: 35px 20px;
+    }
+}
